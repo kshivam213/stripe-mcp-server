@@ -190,7 +190,7 @@ app.get("/tools", (_req: Request, res: Response) => {
 
 // ── POST /:toolName/call ──────────────────────────────────────────────────────
 
-app.post("/:toolName/call", async (req: Request<{ toolName: string }>, res: Response, next: NextFunction) => {
+app.post("/tools/:toolName/call", async (req: Request<{ toolName: string }>, res: Response, next: NextFunction) => {
   const tool = toolMap.get(req.params.toolName);
   if (!tool) {
     res.status(404).json({ error: `Tool '${req.params.toolName}' not found` });
